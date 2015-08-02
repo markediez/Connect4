@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Created by byrus on 8/1/2015.
+ * Created by Mark Diez on 8/1/2015.
  */
 public class ConnectFour extends JPanel implements ActionListener{
     private int turns;
