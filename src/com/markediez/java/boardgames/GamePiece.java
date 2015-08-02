@@ -37,7 +37,7 @@ public class GamePiece extends JButton {
     }
     public void place(int turn) {
         int remainder = turn % 2;
-        if(remainder == 1) {
+        if(remainder == 0) {
             this.color = PieceColor.RED;
         } else {
             this.color = PieceColor.YELLOW;
