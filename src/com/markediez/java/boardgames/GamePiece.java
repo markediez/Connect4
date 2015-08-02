@@ -27,15 +27,17 @@ public class GamePiece extends JButton {
         this.color = color;
     }
 
-    // Methods
+    // Public Methods
     public void check(GamePiece piece) {
         if(piece.getPieceColor() != PieceColor.BLANK && this.color == PieceColor.BLANK) {
             this.setEnabled(true);
+        } else {
+            this.setEnabled(false);
         }
     }
     public void place(int turn) {
         int remainder = turn % 2;
-        if(remainder == 0) {
+        if(remainder == 1) {
             this.color = PieceColor.RED;
         } else {
             this.color = PieceColor.YELLOW;
@@ -45,13 +47,29 @@ public class GamePiece extends JButton {
         this.setEnabled(false);
     }
 
+    /**
+     * Checks if the PieceType are similar
+     * @param gamePiece
+     * @return true if similar PieceType
+     */
+    public boolean checkConnection(GamePiece gamePiece) {
+        if(this.color == gamePiece.color) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // Private Methods
     private void setColor(PieceColor c) {
         if (c == PieceColor.YELLOW) {
             this.setBackground(Color.YELLOW);
         } else if( c== PieceColor.RED) {
             this.setBackground(Color.RED);
         } else {
-            this.setBackground(Color.GRAY);
+            this.setBackground(null);
+            this.setText("BLANK");
+            this.setEnabled(false);
         }
     }
     // Getters and Setters
@@ -59,5 +77,7 @@ public class GamePiece extends JButton {
     public int getCol() { return this.col; }
     public PieceColor getPieceColor() { return this.color; }
     public String getColor() { return this.color.name(); }
+
+    public void setPieceColor(PieceColor color) { this.color = color; setColor(color); }
 
 }
